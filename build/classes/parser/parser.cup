@@ -1,0 +1,41 @@
+package parser;
+import java.io.*;
+import java_cup.runtime.*;
+import scanner.Lexer;
+
+parser code
+{:
+        public static void main (String args[]) throws Exception {
+            new parser (new Lexer (System.in).parse();
+        }
+
+        public void syntax_error (Symbol s) {
+            report_error ("Erro de sintaxe. Linha: " + (s.right + 1) +
+            " Coluna: " + s.left + ". Texto: \"" + s.value + "\"", null);
+        }
+
+:};
+
+terminal String IF, VAR, STR;
+terminal integer INT;
+non terminal START, COND, ATR, NUM, EXP;
+
+
+
+
+START ::= START EXP
+        | EXP
+;
+
+EXP ::= COND ATR NUM
+       | error {: System.out.println("Erro sintatico"); :};
+
+COND ::= IF
+;
+
+ATR ::= VAR
+;
+
+NUM ::= INT
+;
+
